@@ -1,4 +1,4 @@
-(ns euler.core)
+(ns euler.p21)
 
 ;Problem 21: Amicable Numbers
 ;
