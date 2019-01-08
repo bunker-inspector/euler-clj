@@ -12,16 +12,18 @@
 (defn divisors
   [x]
   (->>
-    (/ x 2)
+    (/ (inc x) 2)
     (inc)
     (range)
     (drop 1)
     (filter #(= 0 (mod x %)))
     ))
 
+(def divisors* (memoize divisors))
+
 (defn- sum-divisors
   [x]
-  (apply + (divisors x)))
+  (apply + (divisors* x)))
 
 (def sum-divisors* (memoize sum-divisors))
 
@@ -35,6 +37,4 @@
     (map sort)
     (set)
     (map (partial apply +))
-    (apply +)
-    ))
-
+    (apply +)))
