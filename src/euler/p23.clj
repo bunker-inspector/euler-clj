@@ -24,10 +24,10 @@
 (defn solution
   []
   (->>
-    (for [a abundant
+   (for [a abundant
          b abundant
          :let [v (+ a b)]
          :when (> limit v)]
-    v)
-    (#(remove (set %) (set (range limit))))
-    (apply +)))
+     v)
+   (#(remove (set %) (set (range limit))))
+   (apply +)))

@@ -12,31 +12,30 @@
 (defn- name-score
   [name]
   (->>
-    name
-    (map int)
-    (map #(- % 64))
-    (apply +)))
+   name
+   (map int)
+   (map #(- % 64))
+   (apply +)))
 
 (defn get-name-scores
   []
   (let
    [names (->
-    (slurp "resources/p022_names.txt")
-    (str/split #","))]
+           (slurp "resources/p022_names.txt")
+           (str/split #","))]
     (->>
-      names
-      (sort)
-      (map (partial drop 1))
-      (map drop-last)
-      (map name-score)
-      (interleave (->>
-                    (count names)
-                    (inc)
-                    (range)
-                    (drop 1)))
-      (partition 2)
-      (map (partial apply *))
-      (apply +))
-   ))
+     names
+     (sort)
+     (map (partial drop 1))
+     (map drop-last)
+     (map name-score)
+     (interleave (->>
+                  (count names)
+                  (inc)
+                  (range)
+                  (drop 1)))
+     (partition 2)
+     (map (partial apply *))
+     (apply +))))
 
 

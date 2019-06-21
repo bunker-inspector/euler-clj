@@ -12,12 +12,11 @@
 (defn divisors
   [x]
   (->>
-    (/ (inc x) 2)
-    (inc)
-    (range)
-    (drop 1)
-    (filter #(= 0 (mod x %)))
-    ))
+   (/ (inc x) 2)
+   (inc)
+   (range)
+   (drop 1)
+   (filter #(= 0 (mod x %)))))
 
 (def divisors* (memoize divisors))
 
@@ -29,12 +28,12 @@
 
 (let [r (drop 1 (range 10000))]
   (->>
-    r
-    (interleave (map sum-divisors* r))
-    (partition 2)
-    (filter (fn [[a b]] (not= a b)))
-    (filter (fn [[sum value]] (= value (sum-divisors* sum))))
-    (map sort)
-    (set)
-    (map (partial apply +))
-    (apply +)))
+   r
+   (interleave (map sum-divisors* r))
+   (partition 2)
+   (filter (fn [[a b]] (not= a b)))
+   (filter (fn [[sum value]] (= value (sum-divisors* sum))))
+   (map sort)
+   (set)
+   (map (partial apply +))
+   (apply +)))

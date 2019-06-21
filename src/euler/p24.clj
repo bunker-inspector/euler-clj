@@ -14,8 +14,8 @@
 (def digits "0123456789")
 
 (nth (->>
-  digits
-  (c/permutations)
-  (map (partial s/join ""))
-  (sort)
-  ) (dec 1000000))
+      digits
+      (c/permutations)
+      (map (partial s/join ""))
+      (sort))
+      (dec 1000000))
